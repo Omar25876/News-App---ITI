@@ -2,12 +2,15 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Define color constants
   static const Color primaryColor = Color(0xFFC53030);
+  static const Color onBoardingColor = Color(0xFF8A8CA2);
   static const Color backgroundColor = Colors.white;
   static const Color darkGradientColor = Colors.black;
   static const Color errorColor = Colors.red;
   static const Color disabledColor = Colors.grey;
+  static const Color whiteBgColor = Color(0xFFFAFAFA);
+  static const Color skipBtnColor = Color(0xFFD32F2F);
+  static const Color graySearchColor = Color(0xFF6D6D6D);
 
   static ThemeData get lightTheme {
     return ThemeData(
@@ -21,33 +24,53 @@ class AppTheme {
         onSecondary: Colors.white70,
       ),
       scaffoldBackgroundColor: backgroundColor,
-      textTheme: const TextTheme(
-        headlineLarge: TextStyle(
+      textTheme: TextTheme(
+        headlineLarge: const TextStyle(
           fontSize: 32,
           fontWeight: FontWeight.w700,
           letterSpacing: 2,
           color: Colors.white,
         ),
-        headlineMedium: TextStyle(
+        headlineMedium: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w600,
           color: Colors.white,
         ),
-        titleMedium: TextStyle(
+        titleMedium: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
-        bodyMedium: TextStyle(
+        bodyMedium: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.normal,
           color: Colors.black,
         ),
-        bodySmall: TextStyle(
+        bodySmall: const TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.normal,
           color: Colors.white70,
         ),
+
+        labelLarge:TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+          color: Color(0xFF484A5A),
+        ),
+
+        labelMedium:  TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.normal,
+          color: onBoardingColor,
+        ),
+
+        labelSmall: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: graySearchColor,
+        ),
+
+
       ),
       appBarTheme: const AppBarTheme(
         backgroundColor: backgroundColor,
@@ -64,8 +87,8 @@ class AppTheme {
         contentPadding: EdgeInsets.zero,
         minLeadingWidth: 16,
       ),
-      iconTheme: const IconThemeData(color: Colors.black),
-      cardTheme: CardTheme(
+      iconTheme: IconThemeData(color: Colors.black),
+      cardTheme: CardThemeData(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 0,
       ),

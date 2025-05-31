@@ -1,19 +1,18 @@
 // trending_news_widget.dart
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/core/extensions/extensions.dart';
 import 'package:news_app/core/theme/light.dart';
 import 'package:news_app/features/home/models/news_article_model.dart';
 
 class TrendingNews extends StatelessWidget {
   final bool isLoading;
   final List<NewsArticle> articles;
-  final String Function(DateTime) formatTimeAgo;
 
   const TrendingNews({
     super.key,
     required this.isLoading,
     required this.articles,
-    required this.formatTimeAgo,
   });
 
   @override
@@ -150,7 +149,7 @@ class TrendingNews extends StatelessWidget {
                                             ),
                                             const SizedBox(width: 12),
                                             Text(
-                                              formatTimeAgo(article.publishedAt),
+                                              article.publishedAt.formatTimeAgo(),
                                               style:
                                                   Theme.of(context).textTheme.bodySmall,
                                             ),

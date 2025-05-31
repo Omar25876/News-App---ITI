@@ -5,14 +5,20 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:news_app/core/service_locator.dart';
 import 'package:news_app/core/theme/light.dart';
 import 'package:news_app/features/home/models/news_article_model.dart';
+import 'package:news_app/features/search/article_details_screen.dart';
 import 'package:news_app/features/splash/splash_screen.dart';
 import 'package:news_app/features/main/main_screen.dart';
 import 'package:news_app/features/onboarding/onboarding_screen.dart';
 import 'package:news_app/features/auth/sign_in_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/services/preferences_manager.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await PreferencesManager().init();
+
   await dotenv.load(fileName: ".env");
   await Hive.initFlutter();
 
@@ -20,7 +26,9 @@ void main() async {
 
   await Hive.openBox('bookmarks');
   await Hive.openBox('settings');
+
   setupLocator();
+
   runApp(const NewsApp());
 }
 
@@ -37,6 +45,7 @@ class NewsApp extends StatelessWidget {
         '/main': (_) => const MainScreen(),
         '/onboarding': (_) => const OnboardingScreen(),
         '/signin': (_) => const SignInScreen(),
+        '/searchDetails': (_) => const ArticleDetailsScreen(),
       },
     );
   }
