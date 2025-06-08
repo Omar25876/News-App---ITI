@@ -4,6 +4,7 @@ class StorageKeys{
   static const String userPassword = 'user_password';
   static const String isLogin = 'is_logged_in';
   static const String bookmarks = 'bookmarks';
-
+  static const String userImage = 'userImage';
+  static const String username = "username";
 
 }

@@ -45,12 +45,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         const Text(
                           'Welcome to Newst',
                           style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFF363636),
                           ),
                         ),
-                        const SizedBox(height: 32),
+                        const SizedBox(height: 16),
                         Form(
                           key: _formKey,
                           child: Column(

@@ -1,18 +1,24 @@
 // main.dart
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:news_app/core/service_locator.dart';
 import 'package:news_app/core/theme/light.dart';
 import 'package:news_app/features/home/models/news_article_model.dart';
+import 'package:news_app/features/profile/app_controller.dart';
 import 'package:news_app/features/search/article_details_screen.dart';
 import 'package:news_app/features/splash/splash_screen.dart';
 import 'package:news_app/features/main/main_screen.dart';
 import 'package:news_app/features/onboarding/onboarding_screen.dart';
 import 'package:news_app/features/auth/sign_in_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/services/preferences_manager.dart';
+import 'features/categories/categories_screen.dart';
+import 'features/home/controller/home_controller.dart';
+import 'features/profile/user_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,16 +43,35 @@ class NewsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.lightTheme,
-      home: const SplashScreenWrapper(),
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/main': (_) => const MainScreen(),
-        '/onboarding': (_) => const OnboardingScreen(),
-        '/signin': (_) => const SignInScreen(),
-        '/searchDetails': (_) => const ArticleDetailsScreen(),
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppController()),
+        ChangeNotifierProvider(create: (_) => HomeController()),
+       ChangeNotifierProvider(create: (_) => UserController()..loadUserData(),),
+
+
+      ],
+      child: MaterialApp(
+        supportedLocales: [
+          const Locale('en'),
+          const Locale('ar'),
+          const Locale.fromSubtags(languageCode: 'ar', scriptCode: 'arabic'),
+          const Locale.fromSubtags(languageCode: 'ar', scriptCode: 'arabic'),
+        ],
+        localizationsDelegates: [
+          CountryLocalizations.delegate,
+        ],
+        theme: AppTheme.lightTheme,
+        home: const SplashScreenWrapper(),
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/main': (_) => const MainScreen(),
+          '/onboarding': (_) => const OnboardingScreen(),
+          '/signin': (_) => const SignInScreen(),
+          '/searchDetails': (_) => const ArticleDetailsScreen(),
+          '/categories': (_) => const CategoriesScreen(),
+        },
+      ),
     );
   }
 }

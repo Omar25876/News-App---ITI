@@ -1,6 +1,7 @@
 // trending_news_widget.dart
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/core/extensions/extensions.dart';
 import 'package:news_app/core/theme/light.dart';
 import 'package:news_app/features/home/models/news_article_model.dart';
@@ -18,18 +19,18 @@ class TrendingNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 330,
+      height: 335,
       child: Stack(
         children: [
           Image(
             image: const AssetImage('assets/images/background.png'),
-            height: 240,
+            height: 265,
             width: double.infinity,
             fit: BoxFit.cover,
           ),
           Positioned.fill(
             child: Container(
-              padding: const EdgeInsets.only(top: 60, left: 16, right: 16),
+              padding: const EdgeInsets.only(top: 80, left: 16, right: 16),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -44,13 +45,13 @@ class TrendingNews extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: Text(
-                      /// Handle Theme Here
-                      'NEWST',
-                      style: Theme.of(context).textTheme.headlineLarge,
+                    child: SvgPicture.asset(
+                      'assets/images/newestText.svg',
+                      width: 83,
+                      height: 20,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 32),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

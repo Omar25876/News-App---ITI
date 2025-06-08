@@ -49,7 +49,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w700,
                           color: Color(0xFF363636),
                         ),
                       ),

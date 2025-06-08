@@ -20,13 +20,16 @@ class NewsArticle {
   final String url;
 
   @HiveField(5)
-  final String description;
+  final String? description;
 
   @HiveField(6)
-  final String content;
+  final String? content;
 
   @HiveField(7)
-  final String author;
+  final String? author;
+
+  @HiveField(8)
+  final String? category;
 
   NewsArticle({
     required this.title,
@@ -37,11 +40,13 @@ class NewsArticle {
     required this.description,
     required this.content,
     required this.author,
+    required this.category,
   });
 
   factory NewsArticle.fromJson(Map<String, dynamic> json) {
     return NewsArticle(
       title: json['title'] ?? '',
+      category: json['category'] ?? '',
       description: json['description'] ?? '',
       content: json['content'] ?? '',
       urlToImage: json['urlToImage'],

@@ -22,9 +22,10 @@ class NewsArticleAdapter extends TypeAdapter<NewsArticle> {
       sourceName: fields[2] as String,
       publishedAt: fields[3] as DateTime,
       url: fields[4] as String,
-      description:  fields[5] as String,
-      content:  fields[6] as String,
-      author:  fields[7] as String,
+      description:  fields[5] as String?,
+      content:  fields[6] as String?,
+      author:  fields[7] as String?,
+      category:  fields[8] as String?,
     );
   }
 
@@ -47,7 +48,9 @@ class NewsArticleAdapter extends TypeAdapter<NewsArticle> {
       ..writeByte(6)
       ..write(obj.content)
       ..writeByte(7)
-      ..write(obj.author);
+      ..write(obj.author)
+    ..writeByte(8)
+    ..write(obj.category);
   }
 
   @override

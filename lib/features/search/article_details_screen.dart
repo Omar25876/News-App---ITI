@@ -117,7 +117,7 @@ class ArticleDetailsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              article.description,
+              article.description??'',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w400,
                 color: Color(0xFF363636),

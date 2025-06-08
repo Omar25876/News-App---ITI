@@ -8,6 +8,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     this.obscureText = false,
     this.suffixIcon,
+    this.validator,
+
   });
 
   final String title;
@@ -15,6 +17,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final bool obscureText;
   final Widget? suffixIcon;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class CustomTextFormField extends StatelessWidget {
         const SizedBox(height: 8),
         TextFormField(
           controller: controller,
-
+          validator: validator,
           keyboardType: TextInputType.emailAddress,
           obscureText: obscureText,
           decoration: InputDecoration(
